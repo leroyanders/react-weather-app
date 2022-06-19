@@ -27,7 +27,7 @@ class App extends React.Component<{}, {active: boolean, data: any, error: boolea
         const longitude = position.coords.longitude;
         
         this.setState({ geolocation: `${latitude.toString()},${longitude}` }, () => {
-          fetch(`http://www.mapquestapi.com/geocoding/v1/reverse?key=aC8YRLAkjWFFgDtxI4lXTIbtAklLvX6E&location=${this.state.geolocation}&includeRoadMetadata=true&includeNearestIntersection=true`)
+          fetch(`https://www.mapquestapi.com/geocoding/v1/reverse?key=aC8YRLAkjWFFgDtxI4lXTIbtAklLvX6E&location=${this.state.geolocation}&includeRoadMetadata=true&includeNearestIntersection=true`)
             .then(res => res.json())
             .then(json => {
               this.setState({ location: json.results[0].locations[0] }, () => {
