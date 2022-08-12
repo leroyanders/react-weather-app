@@ -24,7 +24,7 @@ function Weather(props: any) {
     function isToday(date: string) {
         const today = new Date();
         const today_from_steing = new Date(Date.parse(date));
-        return today_from_steing.getDate() == today.getDate()
+        return today_from_steing.getDate() === today.getDate()
     }
 
     function switchType(e: any) {
@@ -45,32 +45,23 @@ function Weather(props: any) {
     function getIcon(state: string, size:number){
         switch(state.toLowerCase()){
             case 'snow':
-                return <img className={`mx-auto w-40`} src="/animated/snowy-1.svg"></img>
-            break;
+                return <img className={`mx-auto w-40`} src="/animated/snowy-1.svg" alt="snow"></img>
             case 'rain':
-                return <img className={`mx-auto w-40`} src="/animated/rainy-1.svg"></img>
-            break;
+                return <img className={`mx-auto w-40`} src="/animated/rainy-1.svg" alt="rain"></img>
             case 'fog':
-                return <img className={`mx-auto w-40`} src="/animated/cloudy.svg"></img>
-            break;
+                return <img className={`mx-auto w-40`} src="/animated/cloudy.svg" alt="fog"></img>
             case 'wind':
-                return <img className={`mx-auto w-40`} src="/animated/weather.svg"></img>
-            break;
+                return <img className={`mx-auto w-40`} src="/animated/weather.svg" alt="wind"></img>
             case 'cloudy':
-                return <img className={`mx-auto w-40`} src="/animated/cloudy-day-1.svg"></img>
-            break;
+                return <img className={`mx-auto w-40`} src="/animated/cloudy-day-1.svg" alt="cloud"></img>
             case 'partly-cloudy-day':
-                return <img className={`mx-auto w-40`} src="/animated/cloudy-day-1.svg"></img>
-            break;
+                return <img className={`mx-auto w-40`} src="/animated/cloudy-day-1.svg" alt="partly-cloudy-day"></img>
             case 'partly-cloudy-night':
-                return <img className={`mx-auto w-40`} src="/animated/cloudy-night-1.svg"></img>
-            break;
+                return <img className={`mx-auto w-40`} src="/animated/cloudy-night-1.svg" alt="partly-cloudy-night"></img>
             case 'clear-day':
-                return <img className={`mx-auto w-40`} src="/animated/day.svg"></img>
-            break;
+                return <img className={`mx-auto w-40`} src="/animated/day.svg" alt="clear-day"></img>
             case 'clear-night':
-                return <img className={`mx-auto w-40`} src="/animated/night.svg"></img>
-            break;
+                return <img className={`mx-auto w-40`} src="/animated/night.svg" alt="clear-night"></img>
         }
     }
 
@@ -92,7 +83,7 @@ function Weather(props: any) {
                                 <div className="data w-2/3 m-auto">
                                     <h1 className="text-slate-500 text-base truncate">Temp</h1>
                                     <p className="text-slate-400 text-base">
-                                        { type == "c" ? ((location.values[0].temp - 32) * 5/9).toFixed(1) : Number.isInteger(location.values[0].temp) ? location.values[0].temp.toString() + '.0' : location.values[0].temp }°
+                                        { type === "c" ? ((location.values[0].temp - 32) * 5/9).toFixed(1) : Number.isInteger(location.values[0].temp) ? location.values[0].temp.toString() + '.0' : location.values[0].temp }°
                                     </p>
                                 </div>
                             </div>
@@ -185,15 +176,15 @@ function Weather(props: any) {
                                         </div>
                                         <div className="temp text-center m-auto w-2/3">
                                             <h1 className="weather-temp temp-num m-auto align-baseline mt-5 text-gray-600 text-center">
-                                                { type == "c" ? ((witem.temp - 32) * 5/9).toFixed(1) : Number.isInteger(witem.temp) ? witem.temp.toString() + '.0' : witem.temp }
+                                                { type === "c" ? ((witem.temp - 32) * 5/9).toFixed(1) : Number.isInteger(witem.temp) ? witem.temp.toString() + '.0' : witem.temp }
                                             </h1>
                                             <p className="text-sm text-gray-400 mt-5 text-bold">
-                                                min: { type == "c" ? ((witem.mint - 32) * 5/9).toFixed(1) : Number.isInteger(witem.mint) ? witem.mint.toString() + '.0' : witem.temp } / max: { type == "c" ? ((witem.maxt - 32) * 5/9).toFixed(1) : Number.isInteger(witem.maxt) ? witem.maxt.toString() + '.0' : witem.maxt}
+                                                min: { type === "c" ? ((witem.mint - 32) * 5/9).toFixed(1) : Number.isInteger(witem.mint) ? witem.mint.toString() + '.0' : witem.temp } / max: { type === "c" ? ((witem.maxt - 32) * 5/9).toFixed(1) : Number.isInteger(witem.maxt) ? witem.maxt.toString() + '.0' : witem.maxt}
                                             </p>
                                         </div>
                                         <div className="temp-switcher text-gray-600">
-                                            <h1 data-toggle className={`weather-temp m-4 ${type == "c" ? "active" : "notactive" } `} data-type="c" onClick={switchType}>°C</h1>
-                                            <h1 data-toggle className={`weather-temp m-4 ${type == "f" ? "active" : "notactive" } `} data-type="f" onClick={switchType}>°F</h1>
+                                            <h1 data-toggle className={`weather-temp m-4 ${type === "c" ? "active" : "notactive" } `} data-type="c" onClick={switchType}>°C</h1>
+                                            <h1 data-toggle className={`weather-temp m-4 ${type === "f" ? "active" : "notactive" } `} data-type="f" onClick={switchType}>°F</h1>
                                         </div>
                                     </div>
                                     <div className="weather-database mx-auto mt-0 p-5 rounded-md text-gray-300 text-xl">
@@ -201,7 +192,7 @@ function Weather(props: any) {
                                             <div className="weather-tab w-1/3">
                                                 <h1 className="text-slate-500">Temp</h1>
                                                 <p className="text-slate-400 text-base">
-                                                    { type == "c" ? ((witem.temp - 32) * 5/9).toFixed(1) : Number.isInteger(witem.temp) ? witem.temp.toString() + '.0' : witem.temp }°
+                                                    { type === "c" ? ((witem.temp - 32) * 5/9).toFixed(1) : Number.isInteger(witem.temp) ? witem.temp.toString() + '.0' : witem.temp }°
                                                 </p>
                                             </div>
                                             <div className="weather-tab w-1/3">
